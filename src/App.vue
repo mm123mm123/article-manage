@@ -16,4 +16,7 @@
 
 <style lang="scss">
 @import "~@/style/reset.scss";
+.page-container{
+  height: 100vh;
+}
 </style>

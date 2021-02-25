@@ -1,9 +1,59 @@
 {
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
+    }
+  },
   "pages": [
     {
       "path": "pages/login/index"
+    },
+    {
+      "path": "pages/article/index",
+      "style": {
+        "navigationBarTitleText": "文章管理"
+      }
+    },
+    {
+      "path": "pages/user/index",
+      "style": {
+        "navigationBarTitleText": "用户权限"
+      }
+    },
+    {
+      "path": "pages/role/index",
+      "style": {
+        "navigationBarTitleText": "角色权限"
+      }
     }
   ],
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#007AFF",
+    "borderStyle": "black",
+    "backgroundColor": "#F8F8F8",
+    "list": [
+      {
+        "pagePath": "pages/article/index",
+        "iconPath": "static/article.png",
+        "selectedIconPath": "static/onarticle.png",
+        "text": "文章管理"
+      },
+      {
+        "pagePath": "pages/user/index",
+        "iconPath": "static/user.png",
+        "selectedIconPath": "static/onuser.png",
+        "text": "用户权限"
+      },
+      {
+        "pagePath": "pages/role/index",
+        "iconPath": "static/role.png",
+        "selectedIconPath": "static/onrole.png",
+        "text": "角色权限"
+      }
+    ]
+  },
   "globalStyle": {
     "navigationStyle": "custom"
   }

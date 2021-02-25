@@ -9,15 +9,22 @@
       <span>密码</span>
       <input type="text">
     </view>
-    <button>登录</button>
+    <button @click="login">登录</button>
   </view>
 </template>
 <script lang="ts">
-
+export default {
+  methods:{
+    login(){
+      uni.reLaunch({
+        url:'../article/index'
+      })
+    }
+  }
+}
 </script>
 <style lang="scss" scoped>
 .page-container{
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
