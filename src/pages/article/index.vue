@@ -13,13 +13,13 @@
 <script lang="ts">
 
 import Vue from 'vue'
-
+import Component from "vue-class-component";
+@Component
 export default class Article extends Vue {
   articleList: string[] = ['家', '春', '秋']
 
   pop() {
-    console.log(this);
-    // this.$refs.popup.open()
+    this.$refs.popup.open()
   }
 }
 </script>
