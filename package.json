@@ -62,7 +62,6 @@
     "regenerator-runtime": "^0.12.1",
     "vue": "^2.6.11",
     "vue-class-component": "^6.3.2",
-    "vue-property-decorator": "^8.0.0",
     "vuex": "^3.2.0"
   },
   "devDependencies": {
@@ -86,11 +85,11 @@
     "jest": "^25.4.0",
     "mini-types": "*",
     "miniprogram-api-typings": "*",
+    "node-sass": "npm:dart-sass@^1.25.0",
     "postcss-comment": "^2.0.0",
-    "typescript": "^3.0.0",
-    "vue-template-compiler": "^2.6.11",
     "sass-loader": "6.0.6",
-    "node-sass": "npm:dart-sass@^1.25.0"
+    "typescript": "^3.0.0",
+    "vue-template-compiler": "^2.6.11"
   },
   "browserslist": [
     "Android >= 4",
