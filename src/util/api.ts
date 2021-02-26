@@ -7,19 +7,14 @@ export const api = {
         });
     },
     post(path: string, data: {}) {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             uni.request({
                 url: this.baseUrl + path,
                 method: 'POST',
                 header: {},
                 data: data,
                 success: (res: any) => {
-                    console.log(res);
-                    if (res.data.info.result === 'success') {
-                        resolve(res.data)
-                    }else{
-                        reject(res.data)
-                    }
+                    resolve(res.data)
                 }
             })
         })

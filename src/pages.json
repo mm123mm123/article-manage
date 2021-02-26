@@ -51,6 +51,12 @@
         "iconPath": "static/role.png",
         "selectedIconPath": "static/onrole.png",
         "text": "角色权限"
+      },
+      {
+        "pagePath": "pages/account/index",
+        "iconPath": "static/account.png",
+        "selectedIconPath": "static/onaccount.png",
+        "text": "账户"
       }
     ]
   },

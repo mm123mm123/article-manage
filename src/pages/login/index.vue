@@ -35,17 +35,18 @@ export default class Login extends Vue {
     } else {
       this.$api.post('login/auth', {username: this.username, password: this.password})
           .then(
-              () => {
+              (data) => {
+                console.log(data);
                 uni.reLaunch({
                   url: '../article/index'
                 })
-              },
-              () => {
-                uni.showToast({
-                  title: '请重新输入用户名或密码',
-                  icon: 'none'
-                });
               }
+              // () => {
+              //   uni.showToast({
+              //     title: '请重新输入用户名或密码',
+              //     icon: 'none'
+              //   });
+              // }
           )
     }
   }
