@@ -15,6 +15,8 @@
 <script lang="ts">
 import Vue from 'vue'
 import Component from "vue-class-component";
+import {setToken} from '@/util/auth';
+import {api} from '@/util/api'
 
 @Component
 export default class Login extends Vue {
@@ -33,20 +35,24 @@ export default class Login extends Vue {
         icon: 'none'
       })
     } else {
-      this.$api.post('login/auth', {username: this.username, password: this.password})
+      api.post('login/auth', {username: this.username, password: this.password})
           .then(
-              (data) => {
+              (data: any) => {
                 console.log(data);
-                uni.reLaunch({
-                  url: '../article/index'
-                })
+                if (data.info.result === 'success') {
+                  setToken()
+                  this.$store.dispatch('getInfo').then(() => {
+                    uni.reLaunch({
+                      url: '../article/index'
+                    })
+                  })
+                } else {
+                  uni.showToast({
+                    title: '请重新输入用户名或密码',
+                    icon: 'none',
+                  })
+                }
               }
-              // () => {
-              //   uni.showToast({
-              //     title: '请重新输入用户名或密码',
-              //     icon: 'none'
-              //   });
-              // }
           )
     }
   }
