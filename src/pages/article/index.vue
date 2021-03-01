@@ -2,7 +2,8 @@
   <view class="page">
     <uni-list>
       <uni-list-item v-for="article in articleList"
-                     :title="article" clickable
+                     :title="article"
+                     clickable
                      @click="pop">
       </uni-list-item>
     </uni-list>

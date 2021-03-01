@@ -26,6 +26,12 @@
       "style": {
         "navigationBarTitleText": "角色权限"
       }
+    },
+    {
+      "path": "pages/account/index",
+      "style": {
+        "navigationBarTitleText": "个人用户"
+      }
     }
   ],
   "tabBar": {
@@ -56,7 +62,7 @@
         "pagePath": "pages/account/index",
         "iconPath": "static/account.png",
         "selectedIconPath": "static/onaccount.png",
-        "text": "账户"
+        "text": "个人账户"
       }
     ]
   },
