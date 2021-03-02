@@ -5,7 +5,14 @@ export type rootState = {
         menuList: string[]
     },
     role: {},
-    article: {},
+    article: {
+        articleList: string[],
+        totalCount: number
+    },
+}
+export type articleState = {
+    articleList: string[],
+    totalCount: number
 }
 export type userState = {
     userNickName: string,

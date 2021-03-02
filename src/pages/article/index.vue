@@ -2,7 +2,7 @@
   <view class="page">
     <uni-list>
       <uni-list-item v-for="article in articleList"
-                     :title="article"
+                     :title="article.content"
                      clickable
                      @click="pop">
       </uni-list-item>
@@ -14,12 +14,19 @@
 <script lang="ts">
 import Vue from 'vue'
 import Component from "vue-class-component";
+
 @Component
 export default class Article extends Vue {
-  articleList: string[] = ['家', '春', '秋']
-  created(){
+  articleList: string[] = []
+
+  created() {
+    this.$store.dispatch('getArticleList')
+        .then(() => {
+          this.articleList = this.$store.getters.articleList
+        })
 
   }
+
   pop() {
     this.$refs.popup.open()
   }
