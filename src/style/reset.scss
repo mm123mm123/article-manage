@@ -17,6 +17,8 @@
 }
 
 button {
+  margin: 0;
+  padding: 0;
   border: none;
   font: inherit;
 }
@@ -24,6 +26,7 @@ button {
 button::after {
   border: none
 }
-ul,ol{
+
+ul, ol {
   list-style: none;
 }

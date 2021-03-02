@@ -13,5 +13,6 @@ export default Vue.extend({
 
 .page-container {
   height: 100vh;
+  width: 100vw;
 }
 </style>

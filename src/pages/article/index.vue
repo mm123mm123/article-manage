@@ -12,13 +12,14 @@
 </template>
 
 <script lang="ts">
-
 import Vue from 'vue'
 import Component from "vue-class-component";
 @Component
 export default class Article extends Vue {
   articleList: string[] = ['家', '春', '秋']
+  created(){
 
+  }
   pop() {
     this.$refs.popup.open()
   }

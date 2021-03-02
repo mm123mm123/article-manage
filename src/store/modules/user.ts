@@ -7,7 +7,8 @@ import {rootState, userState} from "@/store/store";
 export const user: Module<userState, rootState> = {
     state: {
         userNickName: '',
-        roleName: ''
+        roleName: '',
+        menuList:[]
     },
     mutations: {
         setUserNickName(state, data) {
@@ -15,6 +16,9 @@ export const user: Module<userState, rootState> = {
         },
         setRoleName(state, data) {
             state.roleName = data
+        },
+        setMenuList(state,data){
+            state.menuList=data
         }
     },
     actions: {
@@ -24,6 +28,7 @@ export const user: Module<userState, rootState> = {
                     console.log(res.info.userPermission.nickname);
                     commit('setUserNickName', res.info.userPermission.nickname)
                     commit('setRoleName', res.info.userPermission.roleName)
+                    commit('setMenuList',res.info.userPermission.menuList)
                 })
         }
     }
