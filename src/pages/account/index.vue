@@ -14,7 +14,7 @@
                      title="菜单权限"
                      :right-text="menuList"></uni-list-item>
     </uni-list>
-    <view class="buttonWrapper">
+    <view class="saveButtonWrapper">
       <button @click="logout">退出登录</button>
     </view>
   </view>
@@ -69,7 +69,7 @@ export default class User extends Vue {
   }
 }
 
-.buttonWrapper {
+.saveButtonWrapper {
   margin-top: 260px;
   display: flex;
   justify-content: center;
