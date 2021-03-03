@@ -26,7 +26,7 @@
             <view class="item">{{ articleMsg.createTime }}</view>
           </view>
         </uni-list-item>
-        <SaveButton></SaveButton>
+        <SaveButton @buttonOnClick="edit(articleMsg.content)"></SaveButton>
       </uni-list>
     </uni-popup>
     <uni-popup ref="create" type="center">
@@ -37,6 +37,7 @@
             <input v-model="newArticle">
           </view>
         </view>
+        <SaveButton></SaveButton>
       </view>
     </uni-popup>
   </view>
@@ -123,9 +124,9 @@ export default class Article extends Vue {
 }
 
 .createPopup {
+  background-color: #ffffff;
+
   .inputBox {
-    background-color: #ffffff;
-    border: 1px solid red;
     display: flex;
     padding: 10px 20px;
     font-size: 18px;

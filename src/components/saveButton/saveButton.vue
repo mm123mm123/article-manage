@@ -1,6 +1,6 @@
 <template>
   <view class="saveBtnWrapper">
-    <button class="saveButton">保存</button>
+    <button class="saveButton" @click="$emit('buttonOnClick')">保存</button>
   </view>
 </template>
 <script lang="ts">
@@ -11,11 +11,9 @@ export default class SaveButton extends Vue {
 }
 </script>
 <style lang="scss">
-.saveButtonWrapper {
-  border: 1px solid red;
+.saveBtnWrapper {
 
   .saveButton {
-    border: 1px solid red;
     width: 100px;
     margin: 0 auto
   }
