@@ -2,14 +2,14 @@
   <view class="page-container">
     <h1 class="title">后台管理系统</h1>
     <view class="userName loginBoxItem">
-      <span>用户名</span>
-      <input type="text" v-model="username">
+      <input type="text" v-model="username" placeholder="用户名">
     </view>
     <view class="password loginBoxItem">
-      <span>密码</span>
-      <input type="text" v-model="password">
+      <input type="text" v-model="password" placeholder="密码">
     </view>
     <button @click="login">登录</button>
+    <view class="bg l-t"></view>
+    <view class="bg r-t"></view>
   </view>
 </template>
 <script lang="ts">
@@ -20,8 +20,8 @@ import {api} from '@/util/api'
 
 @Component
 export default class Login extends Vue {
-  username: string = 'admin'
-  password: string = '123456'
+  username: string = ''
+  password: string = ''
 
   login() {
     if (!this.username) {
@@ -63,30 +63,35 @@ export default class Login extends Vue {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #f5f5f5;
+  background-color: #ffffff;
+}
 
-  .title {
-    margin-top: 200px;
-    font-size: 30px;
-  }
+.title {
+  z-index: 1;
+  margin-top: 100px;
+  font-size: 30px;
+  color: #ff6300
+}
 
-  input {
-    border: 1px solid #dcdfe6;
-  }
+input {
+  z-index: 1;
+  border-bottom: 1px solid #dcdfe6;
+  width: 260px;
+}
 
-  .loginBoxItem {
-    display: flex;
-    margin-top: 20px;
-    width: 240px;
-    justify-content: space-between;
-  }
+.loginBoxItem {
+  display: flex;
+  margin-top: 40px;
+  justify-content: center;
+}
 
-  button {
-    background-color: #409eff;
-    margin-top: 30px;
-    padding: 4px 26px;
-    color: white;
-    font-size: 16px;
-  }
+button {
+  background-color: #ff6300;
+  margin-top: 40px;
+  width: 260px;
+  padding: 4px 26px;
+  color: white;
+  font-size: 16px;
+  border-radius: 29px;
 }
 </style>

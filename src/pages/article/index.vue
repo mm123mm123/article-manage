@@ -1,5 +1,14 @@
 <template>
   <view class="page">
+    <uni-nav-bar @clickRight="createArticle" @clickLeft="openLeftNav">
+      <view slot="default" class="middle">文章列表</view>
+      <view slot="left" class="left">
+        <image src="../../static/menu.png"></image>
+      </view>
+      <view slot="right" class="right">
+        <image src="../../static/add.png"></image>
+      </view>
+    </uni-nav-bar>
     <uni-list>
       <uni-list-item v-for="article in articleList"
                      :title="article.content"
@@ -7,9 +16,7 @@
                      @click="pop(article)">
       </uni-list-item>
     </uni-list>
-    <view class="createBtnWrapper">
-      <button @click="createArticle">新增文章</button>
-    </view>
+    <LeftNavBar :navStatus="leftNavStatus"></LeftNavBar>
     <uni-popup ref="edit" type="center">
       <uni-list class="editPopup">
         <uni-list-item>
@@ -49,14 +56,20 @@ import Component from "vue-class-component";
 import {clone} from "@/util/clone";
 import {api} from '@/util/api'
 import SaveButton from '@/components/saveButton/saveButton.vue'
+import LeftNavBar from '@/components/leftNavBar/leftNavBar.vue'
 
 @Component({
-  components: {SaveButton}
+  components: {SaveButton, LeftNavBar}
 })
 export default class Article extends Vue {
   articleList: string[] = []
   articleMsg: object = {}
   newArticle: string = ''
+  leftNavStatus: boolean = false
+
+  openLeftNav() {
+    this.leftNavStatus = !this.leftNavStatus
+  }
 
   created() {
     this.getArticleList()
@@ -110,12 +123,51 @@ export default class Article extends Vue {
 }
 </script>
 <style lang="scss" scoped>
+.uni-navbar {
+  //border: 1px solid red;
+  .left {
+    //border: 1px solid blue;
+    display: flex;
+    align-items: center;
+
+    image {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .middle {
+    //border: 1px solid green;
+    margin: 0 auto;
+  }
+
+  .right {
+    //border: 1px solid yellow;
+    display: flex;
+    align-items: center;
+
+    image {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
 .createBtnWrapper {
   margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
 
   button {
-    font-size: 18px;
-    width: 100px;
+    width: 50px;
+    border-radius: 50px;
+    background-color: inherit;
+
+    image {
+      width: 40px;
+      height: 40px;
+    }
+
     margin: 0 auto;
   }
 }
