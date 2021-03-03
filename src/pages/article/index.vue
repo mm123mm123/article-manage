@@ -37,7 +37,7 @@
             <input v-model="newArticle">
           </view>
         </view>
-        <SaveButton></SaveButton>
+        <SaveButton @buttonOnClick="create(newArticle)"></SaveButton>
       </view>
     </uni-popup>
   </view>
@@ -91,6 +91,21 @@ export default class Article extends Vue {
 
   createArticle() {
     this.$refs.create.open()
+  }
+
+  create(data: string) {
+    if (!data) {
+      uni.showToast({
+        title: '请输入题目',
+        icon: 'none'
+      })
+    } else {
+      api.post('article/addArticle', {id: '', content: data})
+          .then(() => {
+            this.getArticleList()
+            this.$refs.create.close()
+          })
+    }
   }
 }
 </script>
