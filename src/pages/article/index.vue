@@ -32,7 +32,7 @@
     <uni-popup ref="create" type="center">
       <view class="createPopup">
         <view class="inputBox">
-          <view>文章题目</view>
+          <view>题目</view>
           <view class="newTitle">
             <input v-model="newArticle">
           </view>
