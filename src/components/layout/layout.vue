@@ -1,27 +1,22 @@
 <template>
   <view>
-    <TopNavBar @openLeftNaV="openLeftNav"
+    <top-nav-bar @openLeftNaV="openLeftNav"
                :title="topNavTitle"
-               :clickRight="rightClickEvent"></TopNavBar>
-    <LeftNavBar :navStatus="leftNavStatus"></LeftNavBar>
+               :clickRight="rightClickEvent"></top-nav-bar>
+    <left-nav-bar :navStatus="leftNavStatus"></left-nav-bar>
     <slot></slot>
   </view>
 </template>
 <script lang="ts">
 import Vue from 'vue'
 import {Component} from 'vue-property-decorator'
-import LeftNavBar from '@/components/leftNavBar/leftNavBar.vue'
-import TopNavBar from '@/components/topNavBar/topNavBar.vue'
-
-@Component({
-  components: {LeftNavBar, TopNavBar}
-})
 const LayoutProps = Vue.extend({
   props: {
     title: String,
     onRightClick: Function
   }
 })
+@Component
 export default class Layout extends LayoutProps {
   leftNavStatus: boolean = false
   topNavTitle: string = this.title

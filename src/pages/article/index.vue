@@ -1,18 +1,6 @@
 <template>
   <view class="page">
-    <!--    <uni-nav-bar @clickRight="createArticle" @clickLeft="openLeftNav">-->
-    <!--      <view slot="default" class="middle">文章列表</view>-->
-    <!--      <view slot="left" class="left">-->
-    <!--        <image src="../../static/menu.png"></image>-->
-    <!--      </view>-->
-    <!--      <view slot="right" class="right">-->
-    <!--        <image src="../../static/add.png"></image>-->
-    <!--      </view>-->
-    <!--    </uni-nav-bar>-->
-    <!--    <TopNavBar title="文章管理"-->
-    <!--               :clickRight="createArticle"></TopNavBar>-->
-    <!--    <LeftNavBar :navStatus="leftNavStatus"></LeftNavBar>-->
-    <Layout title="文章管理" :onRightClick="createArticle">
+    <layout title="文章管理" :onRightClick="createArticle">
       <uni-list>
         <uni-list-item v-for="article in articleList"
                        :title="article.content"
@@ -36,7 +24,7 @@
               <view class="item">{{ articleMsg.createTime }}</view>
             </view>
           </uni-list-item>
-          <SaveButton @buttonOnClick="edit(articleMsg.content)"></SaveButton>
+          <save-button @buttonOnClick="edit(articleMsg.content)"></save-button>
         </uni-list>
       </uni-popup>
       <uni-popup ref="create" type="center">
@@ -47,10 +35,10 @@
               <input v-model="newArticle">
             </view>
           </view>
-          <SaveButton @buttonOnClick="create(newArticle)"></SaveButton>
+          <save-button @buttonOnClick="create(newArticle)"></save-button>
         </view>
       </uni-popup>
-    </Layout>
+    </layout>
   </view>
 </template>
 
@@ -59,14 +47,8 @@ import Vue from 'vue'
 import Component from "vue-class-component";
 import {clone} from "@/util/clone";
 import {api} from '@/util/api'
-import SaveButton from '@/components/saveButton/saveButton.vue'
-// import LeftNavBar from '@/components/leftNavBar/leftNavBar.vue'
-// import TopNavBar from '@/components/topNavBar/topNavBar.vue'
-import Layout from '@/components/layout/layout.vue'
 
-@Component({
-  components: {SaveButton,Layout}
-})
+@Component()
 export default class Article extends Vue {
   articleList: string[] = []
   articleMsg: object = {}
