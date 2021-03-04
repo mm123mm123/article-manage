@@ -1,52 +1,56 @@
 <template>
   <view class="page">
-    <uni-nav-bar @clickRight="createArticle" @clickLeft="openLeftNav">
-      <view slot="default" class="middle">文章列表</view>
-      <view slot="left" class="left">
-        <image src="../../static/menu.png"></image>
-      </view>
-      <view slot="right" class="right">
-        <image src="../../static/add.png"></image>
-      </view>
-    </uni-nav-bar>
-    <uni-list>
-      <uni-list-item v-for="article in articleList"
-                     :title="article.content"
-                     clickable
-                     @click="pop(article)">
-      </uni-list-item>
-    </uni-list>
-    <LeftNavBar :navStatus="leftNavStatus"></LeftNavBar>
-    <uni-popup ref="edit" type="center">
-      <uni-list class="editPopup">
-        <uni-list-item>
-          <view slot="body" class="li">
-            <view>文章题目</view>
-            <view class="item">
-              <input v-model="articleMsg.content">
+    <!--    <uni-nav-bar @clickRight="createArticle" @clickLeft="openLeftNav">-->
+    <!--      <view slot="default" class="middle">文章列表</view>-->
+    <!--      <view slot="left" class="left">-->
+    <!--        <image src="../../static/menu.png"></image>-->
+    <!--      </view>-->
+    <!--      <view slot="right" class="right">-->
+    <!--        <image src="../../static/add.png"></image>-->
+    <!--      </view>-->
+    <!--    </uni-nav-bar>-->
+    <!--    <TopNavBar title="文章管理"-->
+    <!--               :clickRight="createArticle"></TopNavBar>-->
+    <!--    <LeftNavBar :navStatus="leftNavStatus"></LeftNavBar>-->
+    <Layout title="文章管理" :onRightClick="createArticle">
+      <uni-list>
+        <uni-list-item v-for="article in articleList"
+                       :title="article.content"
+                       clickable
+                       @click="pop(article)">
+        </uni-list-item>
+      </uni-list>
+      <uni-popup ref="edit" type="center">
+        <uni-list class="editPopup">
+          <uni-list-item>
+            <view slot="body" class="li">
+              <view>文章题目</view>
+              <view class="item">
+                <input v-model="articleMsg.content">
+              </view>
+            </view>
+          </uni-list-item>
+          <uni-list-item>
+            <view slot="body" class="li">
+              <view>创建时间</view>
+              <view class="item">{{ articleMsg.createTime }}</view>
+            </view>
+          </uni-list-item>
+          <SaveButton @buttonOnClick="edit(articleMsg.content)"></SaveButton>
+        </uni-list>
+      </uni-popup>
+      <uni-popup ref="create" type="center">
+        <view class="createPopup">
+          <view class="inputBox">
+            <view>题目</view>
+            <view class="newTitle">
+              <input v-model="newArticle">
             </view>
           </view>
-        </uni-list-item>
-        <uni-list-item>
-          <view slot="body" class="li">
-            <view>创建时间</view>
-            <view class="item">{{ articleMsg.createTime }}</view>
-          </view>
-        </uni-list-item>
-        <SaveButton @buttonOnClick="edit(articleMsg.content)"></SaveButton>
-      </uni-list>
-    </uni-popup>
-    <uni-popup ref="create" type="center">
-      <view class="createPopup">
-        <view class="inputBox">
-          <view>题目</view>
-          <view class="newTitle">
-            <input v-model="newArticle">
-          </view>
+          <SaveButton @buttonOnClick="create(newArticle)"></SaveButton>
         </view>
-        <SaveButton @buttonOnClick="create(newArticle)"></SaveButton>
-      </view>
-    </uni-popup>
+      </uni-popup>
+    </Layout>
   </view>
 </template>
 
@@ -56,10 +60,12 @@ import Component from "vue-class-component";
 import {clone} from "@/util/clone";
 import {api} from '@/util/api'
 import SaveButton from '@/components/saveButton/saveButton.vue'
-import LeftNavBar from '@/components/leftNavBar/leftNavBar.vue'
+// import LeftNavBar from '@/components/leftNavBar/leftNavBar.vue'
+// import TopNavBar from '@/components/topNavBar/topNavBar.vue'
+import Layout from '@/components/layout/layout.vue'
 
 @Component({
-  components: {SaveButton, LeftNavBar}
+  components: {SaveButton,Layout}
 })
 export default class Article extends Vue {
   articleList: string[] = []
@@ -123,35 +129,35 @@ export default class Article extends Vue {
 }
 </script>
 <style lang="scss" scoped>
-.uni-navbar {
-  //border: 1px solid red;
-  .left {
-    //border: 1px solid blue;
-    display: flex;
-    align-items: center;
-
-    image {
-      width: 20px;
-      height: 20px;
-    }
-  }
-
-  .middle {
-    //border: 1px solid green;
-    margin: 0 auto;
-  }
-
-  .right {
-    //border: 1px solid yellow;
-    display: flex;
-    align-items: center;
-
-    image {
-      width: 24px;
-      height: 24px;
-    }
-  }
-}
+//.uni-navbar {
+//  //border: 1px solid red;
+//  .left {
+//    //border: 1px solid blue;
+//    display: flex;
+//    align-items: center;
+//
+//    image {
+//      width: 20px;
+//      height: 20px;
+//    }
+//  }
+//
+//  .middle {
+//    //border: 1px solid green;
+//    margin: 0 auto;
+//  }
+//
+//  .right {
+//    //border: 1px solid yellow;
+//    display: flex;
+//    align-items: center;
+//
+//    image {
+//      width: 24px;
+//      height: 24px;
+//    }
+//  }
+//}
 
 .createBtnWrapper {
   margin-top: 30px;

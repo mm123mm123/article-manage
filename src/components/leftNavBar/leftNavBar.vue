@@ -11,7 +11,10 @@
           </view>
         </view>
         <view class="menu">
-          <custom-tab-bar class="tabBar" direction="vertical" show-icon/>
+          <custom-tab-bar class="tabBar"
+                          direction="vertical"
+                          show-icon
+                          @onTabItemTap="onTabItemTap"/>
         </view>
         <view class="buttonWrapper">
           <button @click="logout">退出登录</button>
@@ -53,6 +56,10 @@ export default class LeftNavBar extends LeftNavBarProps {
         url: '../login/index'
       })
     })
+  }
+
+  onTabItemTap: object = function (e: any) {
+    uni.reLaunch({url: ".." + e.pagePath.slice(5)})
   }
 }
 </script>
