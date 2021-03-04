@@ -11,13 +11,9 @@
           </view>
         </view>
         <view class="menu">
-          <ul>
-            <li>文章管理</li>
-            <li>用户权限</li>
-            <li>角色权限</li>
-          </ul>
+          <custom-tab-bar class="tabBar" direction="vertical" show-icon/>
         </view>
-        <view class="ButtonWrapper">
+        <view class="buttonWrapper">
           <button @click="logout">退出登录</button>
         </view>
       </view>
@@ -62,25 +58,79 @@ export default class LeftNavBar extends LeftNavBarProps {
 </script>
 <style lang="scss" scoped>
 .navBar {
-  border: 1px solid red;
+  background-color: #f5f5f5;
+  height: 100%;
 
   .userMsg {
-    border: 1px solid blue;
+    padding-top: 6px;
 
     .msgBox {
-      border: 1px solid yellow;
       display: flex;
       align-items: center;
-      justify-content: space-between;
       width: 160px;
+      font-size: 15px;
 
       .image {
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+
         image {
-          width: 40px;
-          height: 40px;
+          width: 26px;
+          height: 26px;
         }
       }
     }
   }
+
+  .menu {
+    margin-top: 10px;
+
+    .tabBar {
+      ::v-deep .uni-tabbar {
+        background-color: #ffffff !important;
+        border-radius: 16px;
+        margin: 0 10px;
+
+        .uni-tabbar__item {
+          border-bottom: 1px solid #f3f3f3;
+
+          .uni-tabbar__bd {
+            width: 180px;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            margin: 10px 0;
+
+            .uni-tabbar__label {
+              font-size: 14px !important;
+              margin-left: 10px;
+            }
+
+            .uni-tabbar__icon {
+              margin-top: 0;
+
+              img {
+                width: 24px;
+                height: 24px;
+              }
+            }
+
+          }
+        }
+
+      }
+    }
+  }
+
+  .buttonWrapper {
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin: 10px 10px 0 10px;
+    font-size: 15px;
+    padding: 4px 0
+  }
+
 }
 </style>
