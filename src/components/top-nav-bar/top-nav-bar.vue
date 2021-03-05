@@ -1,7 +1,7 @@
 <template>
   <view>
     <uni-nav-bar @clickRight="onClickRight" @clickLeft="$emit('openLeftNaV')">
-      <view slot="default" class="middle">文章列表</view>
+      <view slot="default" class="middle">{{topNavTitle}}</view>
       <view slot="left" class="left">
         <image src="../../static/menu.png"></image>
       </view>
@@ -24,6 +24,7 @@ const topNavBarProps = Vue.extend({
 @Component
 export default class TopNavBar extends topNavBarProps {
   onClickRight: Function = this.clickRight
+  topNavTitle: String = this.title
 }
 </script>
 <style lang="scss" scoped>

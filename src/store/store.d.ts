@@ -9,6 +9,9 @@ export type rootState = {
         articleList: string[],
         totalCount: number
     },
+    navBar: {
+        selectedIndex: number
+    }
 }
 export type articleState = {
     articleList: string[],
@@ -18,4 +21,7 @@ export type userState = {
     userNickName: string,
     roleName: string,
     menuList: string[]
+}
+export type navBarState = {
+    selectedIndex: number
 }

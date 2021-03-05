@@ -49,6 +49,7 @@ export default class LeftNavBar extends LeftNavBarProps {
     this.$store.dispatch('getInfo').then(() => {
       this.userNickName = this.$store.getters.userNickName
     })
+    this.selectedTabBarIndex = this.$store.getters.selectedIndex
   }
 
   logout() {
@@ -61,7 +62,7 @@ export default class LeftNavBar extends LeftNavBarProps {
   }
 
   onTabItemTap: object = (e: any) => {
-    console.log(e.index)
+    this.$store.commit('setSelectedIndex',e.index)
     this.selectedTabBarIndex = e.index
     uni.reLaunch({url: ".." + e.pagePath.slice(5)})
   }

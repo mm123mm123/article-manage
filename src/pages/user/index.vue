@@ -1,5 +1,5 @@
 <template>
-  <layout title="用户管理" :onRightClick="log">
+  <layout title="用户权限" :onRightClick="log">
   </layout>
 </template>
 <script lang="ts">

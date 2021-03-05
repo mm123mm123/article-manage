@@ -53,11 +53,6 @@ export default class Article extends Vue {
   articleList: string[] = []
   articleMsg: object = {}
   newArticle: string = ''
-  leftNavStatus: boolean = false
-
-  openLeftNav() {
-    this.leftNavStatus = !this.leftNavStatus
-  }
 
   created() {
     this.getArticleList()
@@ -111,35 +106,6 @@ export default class Article extends Vue {
 }
 </script>
 <style lang="scss" scoped>
-//.uni-navbar {
-//  //border: 1px solid red;
-//  .left {
-//    //border: 1px solid blue;
-//    display: flex;
-//    align-items: center;
-//
-//    image {
-//      width: 20px;
-//      height: 20px;
-//    }
-//  }
-//
-//  .middle {
-//    //border: 1px solid green;
-//    margin: 0 auto;
-//  }
-//
-//  .right {
-//    //border: 1px solid yellow;
-//    display: flex;
-//    align-items: center;
-//
-//    image {
-//      width: 24px;
-//      height: 24px;
-//    }
-//  }
-//}
 
 .createBtnWrapper {
   margin-top: 30px;

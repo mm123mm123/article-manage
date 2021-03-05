@@ -4,6 +4,7 @@ import {getters} from './getters'
 import {article} from "@/store/modules/article";
 import {role} from "@/store/modules/role"
 import {user} from "@/store/modules/user"
+import {navBar} from "@/store/modules/navBar";
 
 
 Vue.use(Vuex);//vue的插件机制
@@ -13,7 +14,8 @@ const store = new Vuex.Store({
     modules: {
         article,
         role,
-        user
+        user,
+        navBar
     },
     getters
 })
