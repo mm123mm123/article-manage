@@ -20,7 +20,7 @@
   </view>
 </template>
 <script lang="ts">
-import Component from "vue-class-component";
+import {Component} from "vue-property-decorator";
 import Vue from "vue";
 import {api} from '@/util/api';
 import {removeToken} from '@/util/auth';

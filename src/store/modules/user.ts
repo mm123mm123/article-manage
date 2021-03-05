@@ -25,7 +25,6 @@ export const user: Module<userState, rootState> = {
         getInfo({state, commit}) {
             return api.post('login/getInfo', '')
                 .then((res: any) => {
-                    console.log(res.info.userPermission.nickname);
                     commit('setUserNickName', res.info.userPermission.nickname)
                     commit('setRoleName', res.info.userPermission.roleName)
                     commit('setMenuList',res.info.userPermission.menuList)

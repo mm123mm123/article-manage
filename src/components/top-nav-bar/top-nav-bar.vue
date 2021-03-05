@@ -13,6 +13,7 @@
 </template>
 <script lang="ts">
 import Vue from 'vue'
+import Component from "vue-property-decorator";
 
 const topNavBarProps = Vue.extend({
   props: {
@@ -20,6 +21,7 @@ const topNavBarProps = Vue.extend({
     clickRight: Function
   }
 })
+@Component
 export default class TopNavBar extends topNavBarProps {
   onClickRight: Function = this.clickRight
 }

@@ -1,8 +1,8 @@
 <template>
   <view>
     <top-nav-bar @openLeftNaV="openLeftNav"
-               :title="topNavTitle"
-               :clickRight="rightClickEvent"></top-nav-bar>
+                 :title="topNavTitle"
+                 :clickRight="rightClickEvent"></top-nav-bar>
     <left-nav-bar :navStatus="leftNavStatus"></left-nav-bar>
     <slot></slot>
   </view>
@@ -10,6 +10,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import {Component} from 'vue-property-decorator'
+
 const LayoutProps = Vue.extend({
   props: {
     title: String,

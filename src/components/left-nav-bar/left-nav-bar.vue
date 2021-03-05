@@ -13,6 +13,7 @@
         <view class="menu">
           <custom-tab-bar class="tabBar"
                           direction="vertical"
+                          :selected="selectedTabBarIndex"
                           show-icon
                           @onTabItemTap="onTabItemTap"/>
         </view>
@@ -42,6 +43,7 @@ export default class LeftNavBar extends LeftNavBarProps {
   }
 
   userNickName: string = ''
+  selectedTabBarIndex: number = 0
 
   created() {
     this.$store.dispatch('getInfo').then(() => {
@@ -58,7 +60,9 @@ export default class LeftNavBar extends LeftNavBarProps {
     })
   }
 
-  onTabItemTap: object = function (e: any) {
+  onTabItemTap: object = (e: any) => {
+    console.log(e.index)
+    this.selectedTabBarIndex = e.index
     uni.reLaunch({url: ".." + e.pagePath.slice(5)})
   }
 }

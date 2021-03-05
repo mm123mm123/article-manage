@@ -44,11 +44,11 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import Component from "vue-class-component";
+import {Component} from "vue-property-decorator";
 import {clone} from "@/util/clone";
 import {api} from '@/util/api'
 
-@Component()
+@Component
 export default class Article extends Vue {
   articleList: string[] = []
   articleMsg: object = {}
