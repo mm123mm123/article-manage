@@ -54,6 +54,7 @@ export default class LeftNavBar extends LeftNavBarProps {
 
   logout() {
     api.post('login/logout', '').then(() => {
+      this.$store.commit('setSelectedIndex', 0) //下次登录默认选择第一个
       removeToken()
       uni.reLaunch({
         url: '../login/index'
@@ -62,7 +63,7 @@ export default class LeftNavBar extends LeftNavBarProps {
   }
 
   onTabItemTap: object = (e: any) => {
-    this.$store.commit('setSelectedIndex',e.index)
+    this.$store.commit('setSelectedIndex', e.index)
     this.selectedTabBarIndex = e.index
     uni.reLaunch({url: ".." + e.pagePath.slice(5)})
   }
@@ -100,6 +101,7 @@ export default class LeftNavBar extends LeftNavBarProps {
 
     .tabBar {
       ::v-deep .uni-tabbar {
+        display: block !important;
         background-color: #ffffff !important;
         border-radius: 16px;
         margin: 0 10px;

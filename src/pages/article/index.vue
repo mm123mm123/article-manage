@@ -24,7 +24,7 @@
               <view class="item">{{ articleMsg.createTime }}</view>
             </view>
           </uni-list-item>
-          <save-button @buttonOnClick="edit(articleMsg.content)"></save-button>
+          <save-button class="saveBtn" @buttonOnClick="edit(articleMsg.content)"></save-button>
         </uni-list>
       </uni-popup>
       <uni-popup ref="create" type="center">
@@ -35,7 +35,7 @@
               <input v-model="newArticle">
             </view>
           </view>
-          <save-button @buttonOnClick="create(newArticle)"></save-button>
+          <save-button class="saveBtn" @buttonOnClick="create(newArticle)"></save-button>
         </view>
       </uni-popup>
     </layout>
@@ -126,35 +126,64 @@ export default class Article extends Vue {
   }
 }
 
-.editPopup {
-  .uni-list-item {
-    .li {
-      display: flex;
-      flex-direction: row;
-      width: 280px;
+::v-deep .uni-popup__wrapper-box {
 
-      input {
-        border: 1px solid gray;
+  .editPopup {
+    border-radius: 16px;
+    background-color: #ffffff;
+
+    .uni-list-item {
+      border-radius: 16px;
+
+      .li {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 280px;
+
+        input {
+          border: 1px solid #dfdfdf;
+          min-height: 30px;
+          padding-left: 10px;
+        }
+
+        .item {
+          margin-left: 20px;
+        }
       }
+    }
 
-      .item {
-        margin-left: 20px;
+    .saveBtn {
+      margin-bottom: 10px;
+
+      .saveButton {
+        margin-left: 230px;
       }
     }
   }
 }
 
+
 .createPopup {
   background-color: #ffffff;
-
+  border-radius: 6px;
+  padding: 6px 0;
   .inputBox {
     display: flex;
     padding: 10px 20px;
     font-size: 18px;
 
     input {
-      border: 1px solid green;
+      border: 1px solid #dfdfdf;
       margin-left: 20px;
+    }
+  }
+
+  .saveBtn {
+    padding-bottom: 6px;
+
+    ::v-deep .saveButton {
+      margin-left: 190px;
     }
   }
 }

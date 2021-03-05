@@ -16,8 +16,11 @@ export default class SaveButton extends Vue {
 .saveBtnWrapper {
 
   .saveButton {
-    width: 100px;
-    margin: 0 auto
+    font-size: 16px;
+    border: 1px solid #dddddd;
+    width: 60px;
+    background-color: #f9f9f9;
+    padding: 4px 10px;
   }
 }
 </style>

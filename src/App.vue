@@ -15,4 +15,8 @@ export default Vue.extend({
   height: 100vh;
   width: 100vw;
 }
+
+.uni-tabbar {
+  display: none !important;
+}
 </style>

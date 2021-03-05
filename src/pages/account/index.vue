@@ -1,22 +1,21 @@
 <template>
   <view class="page-container">
-    <view class="msgBox">
-      <view class="image">
-        <image src="../../static/userMsg.png"></image>
+    <layout title="个人账户">
+      <view class="msgBox">
+        <view class="image">
+          <image src="../../static/userMsg.png"></image>
+        </view>
+        <view class="userNickName">{{ userNickName }}</view>
       </view>
-      <view class="userNickName">{{ userNickName }}</view>
-    </view>
-    <uni-list>
-      <uni-list-item class="userNickName"
-                     title="角色"
-                     :right-text="roleName"></uni-list-item>
-      <uni-list-item class="userMenuList"
-                     title="菜单权限"
-                     :right-text="menuList"></uni-list-item>
-    </uni-list>
-    <view class="saveButtonWrapper">
-      <button @click="logout">退出登录</button>
-    </view>
+      <uni-list>
+        <uni-list-item class="userNickName"
+                       title="角色"
+                       :right-text="roleName"></uni-list-item>
+        <uni-list-item class="userMenuList"
+                       title="菜单权限"
+                       :right-text="menuList"></uni-list-item>
+      </uni-list>
+    </layout>
   </view>
 </template>
 <script lang="ts">
@@ -66,18 +65,6 @@ export default class User extends Vue {
   image {
     width: 100px;
     height: 100px;
-  }
-}
-
-.saveButtonWrapper {
-  margin-top: 260px;
-  display: flex;
-  justify-content: center;
-
-  button {
-    font-size: 16px;
-    width: 120px;
-    padding: 6px 18px;
   }
 }
 </style>
