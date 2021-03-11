@@ -5,7 +5,7 @@
       <input type="text" v-model="username" placeholder="用户名">
     </view>
     <view class="password loginBoxItem">
-      <input type="text" v-model="password" placeholder="密码">
+      <input type="password" v-model="password" placeholder="密码">
     </view>
     <button @click="login">登录</button>
     <view class="bg l-t"></view>
