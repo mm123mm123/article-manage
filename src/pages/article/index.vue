@@ -8,7 +8,7 @@
                        @click="pop(article)">
         </uni-list-item>
       </uni-list>
-      <uni-popup ref="edit" type="center">
+      <uni-popup ref="editBox" type="center">
         <uni-list class="editPopup">
           <uni-list-item>
             <view slot="body" class="li">
@@ -27,7 +27,7 @@
           <save-button class="saveBtn" @buttonOnClick="edit(articleMsg.content)"></save-button>
         </uni-list>
       </uni-popup>
-      <uni-popup ref="create" type="center">
+      <uni-popup ref="createBox" type="center">
         <view class="createPopup">
           <view class="inputBox">
             <view>题目</view>
@@ -44,14 +44,24 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import {Component} from "vue-property-decorator";
+import {Component, Ref} from "vue-property-decorator";
 import {clone} from "@/util/clone";
 import {api} from '@/util/api'
+import {article} from "@/store/modules/article";
 
 @Component
 export default class Article extends Vue {
+  @Ref() readonly editBox!: {
+    open: Function
+    close: Function
+  }
+  @Ref() readonly createBox!: {
+    open: Function
+    close: Function
+  }
+
   articleList: string[] = []
-  articleMsg: object = {}
+  articleMsg: { content: String, createTime: String, id: number } = {content: '', createTime: '', id: 0}
   newArticle: string = ''
 
   created() {
@@ -67,7 +77,11 @@ export default class Article extends Vue {
 
   pop(data: object) {
     this.articleMsg = clone(data)
-    this.$refs.edit.open()
+    console.log(this.articleMsg);
+    console.log(typeof this.articleMsg.content);
+    console.log(typeof this.articleMsg.createTime);
+    console.log(typeof this.articleMsg.id);
+    this.editBox.open()
   }
 
   edit(data: any) {
@@ -80,13 +94,13 @@ export default class Article extends Vue {
       api.post('article/updateArticle', {id: this.articleMsg.id, content: data})
           .then(() => {
             this.getArticleList()
-            this.$refs.edit.close()
+            this.editBox.close()
           })
     }
   }
 
   createArticle() {
-    this.$refs.create.open()
+    this.createBox.open()
   }
 
   create(data: string) {
@@ -99,7 +113,7 @@ export default class Article extends Vue {
       api.post('article/addArticle', {id: '', content: data})
           .then(() => {
             this.getArticleList()
-            this.$refs.create.close()
+            this.createBox.close()
           })
     }
   }
@@ -168,6 +182,7 @@ export default class Article extends Vue {
   background-color: #ffffff;
   border-radius: 6px;
   padding: 6px 0;
+
   .inputBox {
     display: flex;
     padding: 10px 20px;

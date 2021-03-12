@@ -25,7 +25,7 @@
   </view>
 </template>
 <script lang="ts">
-import {Component, Watch, Prop} from "vue-property-decorator";
+import {Component, Watch, Prop, Ref} from "vue-property-decorator";
 import Vue from "vue";
 import {api} from '@/util/api';
 import {removeToken} from '@/util/auth';
@@ -34,14 +34,11 @@ import 'reflect-metadata'
 @Component
 export default class LeftNavBar extends Vue {
   @Prop() navStatus!: Boolean
-
-  $refs: {
-    leftNav: { open: Function }
-  }
+  @Ref() readonly leftNav!: { open: Function }
 
   @Watch('navStatus')
   onNavStatusChanged() {
-    this.$refs.leftNav.open()
+    this.leftNav.open()
   }
 
   userNickName: string = ''

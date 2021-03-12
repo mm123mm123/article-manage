@@ -1,7 +1,7 @@
 <template>
   <view>
     <uni-nav-bar @clickRight="onClickRight" @clickLeft="$emit('openLeftNaV')">
-      <view slot="default" class="middle">{{topNavTitle}}</view>
+      <view slot="default" class="middle">{{ topNavTitle }}</view>
       <view slot="left" class="left">
         <image src="../../static/menu.png"></image>
       </view>
@@ -13,25 +13,19 @@
 </template>
 <script lang="ts">
 import Vue from 'vue'
-import Component from "vue-property-decorator";
+import {Component, Prop} from "vue-property-decorator";
 
-const topNavBarProps = Vue.extend({
-  props: {
-    title: String,
-    clickRight: Function
-  }
-})
 @Component
-export default class TopNavBar extends topNavBarProps {
+export default class TopNavBar extends Vue {
+  @Prop() title!: String
+  @Prop() clickRight!: Function
   onClickRight: Function = this.clickRight
   topNavTitle: String = this.title
 }
 </script>
 <style lang="scss" scoped>
 .uni-navbar {
-  //border: 1px solid red;
   .left {
-    //border: 1px solid blue;
     display: flex;
     align-items: center;
 

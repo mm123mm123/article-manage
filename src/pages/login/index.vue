@@ -20,8 +20,8 @@ import {api} from '@/util/api'
 
 @Component
 export default class Login extends Vue {
-  username: string = ''
-  password: string = ''
+  username: string = 'admin'
+  password: string = '123456'
 
   login() {
     if (!this.username) {
@@ -38,7 +38,6 @@ export default class Login extends Vue {
       api.post('login/auth', {username: this.username, password: this.password})
           .then(
               (data: any) => {
-                console.log(data);
                 if (data.info.result === 'success') {
                   setToken()
                   this.$store.dispatch('getInfo').then(() => {
